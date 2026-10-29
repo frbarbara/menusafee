@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="color-scheme" content="light dark">
+  <title>MenuSafe</title>
+  <meta name="description" content="Verifique com rapidez e elegância a compatibilidade de pratos e ingredientes com suas restrições alimentares.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Efeito de fundo embaçado com manchas suaves de cores para Modo Claro (estilo referência) -->
+  <div class="ambient-mesh" aria-hidden="true">
+    <div class="ambient-orb orb-warm-hero"></div>
+    <div class="ambient-orb orb-green-top"></div>
+    <div class="ambient-orb orb-teal-mid"></div>
+    <div class="ambient-orb orb-cream-mid"></div>
+    <div class="ambient-orb orb-orange-glow"></div>
+    <div class="ambient-orb orb-cyan-accent"></div>
+    <div class="ambient-orb orb-green-bottom"></div>
+  </div>
+
+  <!-- Iluminação ambiente suave preservada para o Modo Escuro -->
+  <div class="ambient-glow ambient-glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow ambient-glow-2" aria-hidden="true"></div>
+
+  <!-- 1. Cabeçalho Moderno com Navegação e Alternador de Tema (Largura total da tela) -->
+  <header class="site-header">
+    <div class="header-container">
+      <!-- Logo / Marca -->
+      <a href="#hero" class="brand-link" aria-label="Ir para o início do MenuSafe">
+        <div class="brand-logo" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <span class="brand-name">Menu<span class="brand-accent">Safe</span></span>
+      </a>
+
+      <!-- Navegação Desktop -->
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active">Início</a></li>
+          <li><a href="#restricoes" class="nav-link">Restrições</a></li>
+          <li><a href="#analisar" class="nav-link">Analisar</a></li>
+          <li><a href="#historico" class="nav-link">Histórico</a></li>
+          <li><a href="#sobre" class="nav-link">Sobre</a></li>
+        </ul>
+      </nav>
+
+      <!-- Ações do Cabeçalho: Alternador de Tema & Botão Mobile -->
+      <div class="header-actions">
+        <button type="button" id="btn-theme-toggle" class="btn-theme-pill" aria-label="Alternar para Modo Escuro" title="Alternar para Modo Escuro">
+          <span id="theme-icon" class="theme-icon-symbol" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="theme-svg theme-svg-moon">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+        </button>
+
+        <!-- Botão Hambúrguer Compacto (Visível apenas em telas menores) -->
+        <button type="button" id="btn-mobile-menu" class="btn-hamburger" aria-label="Abrir menu de navegação" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu Móvel Compacto / Dropdown -->
+    <div id="mobile-nav" class="mobile-nav-drawer" aria-hidden="true">
+      <ul class="mobile-nav-list">
+        <li><a href="#hero" class="mobile-nav-link active">Início</a></li>
+        <li><a href="#restricoes" class="mobile-nav-link">Restrições</a></li>
+        <li><a href="#analisar" class="mobile-nav-link">Analisar prato</a></li>
+        <li><a href="#historico" class="mobile-nav-link">Histórico</a></li>
+        <li><a href="#sobre" class="mobile-nav-link">Sobre o MenuSafe</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Container Principal do Conteúdo -->
+  <div class="app-layout">
+    <main class="site-main">
+      <!-- 2. Seção Principal (Hero) de Alto Impacto Visual -->
+      <section id="hero" class="hero-section active-page" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>Segurança Alimentar Inteligente</span>
+          </div>
+
+          <h1 id="hero-title" class="hero-title">
+            Escolha seus alimentos com mais <span class="highlight-text">segurança</span>
+          </h1>
+
+          <p class="hero-description">
+            O MenuSafe analisa ingredientes, receitas e cardápios em tempo real. Identifique alérgenos instantaneamente e descubra se o alimento é <strong>Compatível</strong>, exige <strong>Atenção</strong> ou deve ser <strong>Evitado</strong>.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#analisar" class="btn-cta-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.3-4.3"/>
+              </svg>
+              <span>Analisar prato</span>
+            </a>
+            <a href="#sobre" class="btn-cta-secondary">
+              <span>Como funciona</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m9 18 6-6-6-6"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Lado Direito do Hero: Grande Imagem Circular de Prato com Sombra Suave -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="dish-showcase">
+            <div class="dish-glow"></div>
+            <div class="dish-image-wrapper">
+              <img 
+                src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" 
+                alt="Prato de comida saudável e equilibrada" 
+                class="dish-circle-image"
+                loading="eager"
+                onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'><defs><radialGradient id=\'bg\' cx=\'50%\' cy=\'50%\' r=\'50%\'><stop offset=\'0%\' stop-color=\'%23fef3c7\'/><stop offset=\'100%\' stop-color=\'%23d1fae5\'/></radialGradient></defs><circle cx=\'250\' cy=\'250\' r=\'240\' fill=\'url(%23bg)\'/><circle cx=\'250\' cy=\'250\' r=\'200\' fill=\'%23ffffff\' stroke=\'%23e2e8f0\' stroke-width=\'8\'/><text x=\'250\' y=\'280\' font-size=\'130\' text-anchor=\'middle\'>🥗</text></svg>';"
+              >
+            </div>
+            <!-- Card Flutuante Decorativo de Destaque -->
+            <div class="floating-dish-card floating-card-top">
+              <span class="float-icon">🥗</span>
+              <div class="float-text">
+                <span class="float-title">Alimentação Consciente</span>
+                <span class="float-sub">Refeições sem preocupação</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Seção de Categorias / Restrições -->
+      <section id="restricoes" class="content-section" aria-labelledby="restrictions-heading">
+        <div class="section-headline">
+          <span class="section-eyebrow">Personalização</span>
+          <h2 id="restrictions-heading" class="section-heading">Suas restrições alimentares</h2>
+          <p class="section-subtext">Selecione os alimentos e substâncias que você evita consumir:</p>
+        </div>
+
+        <div class="restrictions-container">
+          <div class="restrictions-controls">
+            <span class="controls-label">Opções rápidas:</span>
+            <div class="controls-buttons">
+              <button type="button" id="btn-select-all" class="btn-chip-action">Marcar todas</button>
+              <button type="button" id="btn-clear-restrictions" class="btn-chip-action">Limpar seleção</button>
+            </div>
+          </div>
+
+          <div class="restrictions-grid" role="group" aria-label="Restrições alimentares selecionáveis">
+            <!-- Lactose -->
+            <label class="restriction-card" for="chk-lactose">
+              <input type="checkbox" id="chk-lactose" value="lactose">
+              <div class="restriction-card-body">
+                <div class="restriction-icon-wrap" aria-hidden="true">🥛</div>
+                <div class="restriction-info">
+                  <h3 class="restriction-name">Lactose</h3>
+                  <p class="restriction-desc">Leite, queijos, manteiga, requeijão</p>
+                </div>
+              </div>
+              <div class="restriction-check-indicator" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+              </div>
+            </label>
+
+            <!-- Glúten -->
+            <label class="restriction-card" for="chk-gluten">
+              <input type="checkbox" id="chk-gluten" value="gluten">
+              <div class="restriction-card-body">
+                <div class="restriction-icon-wrap" aria-hidden="true">🌾</div>
+                <div class="restriction-info">
+                  <h3 class="restriction-name">Glúten</h3>
+                  <p class="restriction-desc">Trigo, farinha, pães, massas, cevada</p>
+                </div>
+              </div>
+              <div class="restriction-check-indicator" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+              </div>
+            </label>
+
+            <!-- Amendoim -->
+            <label class="restriction-card" for="chk-amendoim">
+              <input type="checkbox" id="chk-amendoim" value="amendoim">
+              <div class="restriction-card-body">
+                <div class="restriction-icon-wrap" aria-hidden="true">🥜</div>
+                <div class="restriction-info">
+                  <h3 class="restriction-name">Amendoim</h3>
+                  <p class="restriction-desc">Amendoim, pasta de amendoim, paçoca</p>
+                </div>
+              </div>
+              <div class="restriction-check-indicator" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+              </div>
+            </label>
+
+            <!-- Ovo -->
+            <label class="restriction-card" for="chk-ovo">
+              <input type="checkbox" id="chk-ovo" value="ovo">
+              <div class="restriction-card-body">
+                <div class="restriction-icon-wrap" aria-hidden="true">🥚</div>
+                <div class="restriction-info">
+                  <h3 class="restriction-name">Ovo</h3>
+                  <p class="restriction-desc">Ovos, maionese, claras, gemas</p>
+                </div>
+              </div>
+              <div class="restriction-check-indicator" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+              </div>
+            </label>
+
+            <!-- Frutos do mar -->
+            <label class="restriction-card" for="chk-frutos-mar">
+              <input type="checkbox" id="chk-frutos-mar" value="frutos_do_mar">
+              <div class="restriction-card-body">
+                <div class="restriction-icon-wrap" aria-hidden="true">🦐</div>
+                <div class="restriction-info">
+                  <h3 class="restriction-name">Frutos do mar</h3>
+                  <p class="restriction-desc">Camarão, lula, polvo, peixes, mariscos</p>
+                </div>
+              </div>
+              <div class="restriction-check-indicator" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+              </div>
+            </label>
+          </div>
+
+          <div id="restrictions-feedback" class="feedback-notification" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- 4. Seção de Análise -->
+      <section id="analisar" class="content-section" aria-labelledby="analysis-heading">
+        <div class="analysis-box">
+          <div class="analysis-box-header">
+            <span class="section-eyebrow">Verificação Rápida</span>
+            <h2 id="analysis-heading" class="analysis-box-title">Analise seu prato</h2>
+            <p class="analysis-box-sub">Digite os ingredientes ou o nome da refeição que deseja avaliar:</p>
+          </div>
+
+          <form id="form-analise" class="analysis-form" onsubmit="return false;">
+            <div class="textarea-wrapper">
+              <label for="dish-input" class="sr-only">Digite o nome do prato ou seus ingredientes</label>
+              <textarea 
+                id="dish-input" 
+                rows="3" 
+                placeholder="Digite o nome do prato ou seus ingredientes…"
+                maxlength="500"
+              ></textarea>
+              <div class="textarea-footer">
+                <span class="hint-key">Pressione Enter ou clique em analisar</span>
+                <div class="char-count">
+                  <span id="char-counter">0</span>/500
+                </div>
+              </div>
+            </div>
+
+            <!-- Exemplos de Teste Rápido com Design Moderno -->
+            <div class="samples-wrapper">
+              <span class="samples-label">💡 Teste com um prato de exemplo:</span>
+              <div class="samples-pills">
+                <button type="button" class="chip-example" data-sample="Pizza Quatro Queijos com massa de trigo e molho de tomate">Pizza 4 Queijos</button>
+                <button type="button" class="chip-example" data-sample="Risoto de camarão com alho-poró e manteiga">Risoto de Camarão</button>
+                <button type="button" class="chip-example" data-sample="Filé de frango grelhado com arroz branco e salada de alface e tomate">Frango Grelhado & Salada</button>
+                <button type="button" class="chip-example" data-sample="Bife à milanesa crocante com molho especial da casa">Bife à Milanesa</button>
+                <button type="button" class="chip-example" data-sample="Bolo de cenoura com calda de chocolate e amendoim">Bolo com Amendoim</button>
+                <button type="button" class="chip-example" data-sample="Sanduíche natural de atum com maionese no pão de forma">Sanduíche de Atum</button>
+              </div>
+            </div>
+
+            <!-- Botões de Ação do Formulário -->
+            <div class="analysis-actions">
+              <button type="submit" id="btn-analisar" class="btn-action-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="m21 21-4.3-4.3"/>
+                </svg>
+                <span>Analisar prato</span>
+              </button>
+              <button type="button" id="btn-limpar-prato" class="btn-action-secondary" title="Limpar campo de texto">
+                Limpar
+              </button>
+            </div>
+          </form>
+
+          <!-- 5. Card Visual de Resultado da Análise -->
+          <div id="resultado" class="result-container" aria-labelledby="result-title">
+            <h3 id="result-title" class="sr-only">Resultado da Análise</h3>
+
+            <div id="result-area" class="result-area" aria-live="polite">
+              <!-- Estado Inicial quando nenhuma análise foi feita ainda -->
+              <div class="placeholder-state" id="placeholder-state">
+                <div class="placeholder-illustration" aria-hidden="true">🍽️</div>
+                <h4 class="placeholder-title">Pronto para analisar</h4>
+                <p class="placeholder-desc">
+                  Escolha suas restrições acima, digite os ingredientes ou escolha um exemplo e clique em <strong>“Analisar prato”</strong>.
+                </p>
+                <div class="status-legend-bar">
+                  <span class="legend-chip legend-safe"><span class="legend-dot"></span> Compatível</span>
+                  <span class="legend-chip legend-warning"><span class="legend-dot"></span> Atenção</span>
+                  <span class="legend-chip legend-danger"><span class="legend-dot"></span> Evitar</span>
+                </div>
+              </div>
+
+              <!-- Cartão de Resultado Dinâmico (Preenchido pelo JavaScript) -->
+              <div class="result-card-wrapper hidden" id="result-card-wrapper">
+                <!-- Gerado por app.js -->
+              </div>
+            </div>
+
+            <!-- Aviso de Responsabilidade e Contaminação Cruzada -->
+            <div class="safety-disclaimer-card" role="note">
+              <div class="disclaimer-header">
+                <span class="disclaimer-badge-icon" aria-hidden="true">⚠️</span>
+                <span class="disclaimer-title-text">Aviso de Segurança e Responsabilidade</span>
+              </div>
+              <p class="disclaimer-body">
+                O <strong>MenuSafe</strong> é um projeto educativo de desenvolvimento de sistemas. Esta ferramenta <strong>não substitui orientação médica</strong> e não garante a ausência de <strong>contaminação cruzada</strong> no preparo. Sempre confirme a procedência e modo de preparo diretamente com o estabelecimento.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Seção de Histórico: Análises Recentes -->
+      <section id="historico" class="content-section" aria-labelledby="history-heading">
+        <div class="section-headline">
+          <span class="section-eyebrow">Registro de Consultas</span>
+          <div class="history-headline-row">
+            <h2 id="history-heading" class="section-heading">Análises recentes</h2>
+            <button type="button" id="btn-clear-history" class="btn-clear-history" title="Limpar histórico salvo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 6h18"/>
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+              </svg>
+              <span>Limpar histórico</span>
+            </button>
+          </div>
+          <p class="section-subtext">Histórico das últimas refeições analisadas em seu dispositivo:</p>
+        </div>
+
+        <!-- Controles de Filtro e Busca Rápida no Histórico -->
+        <div class="history-controls" id="history-controls">
+          <div class="history-search-wrapper">
+            <svg class="history-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+              type="text" 
+              id="history-search-input" 
+              class="history-search-input" 
+              placeholder="Buscar histórico por nome do prato..." 
+              aria-label="Buscar prato no histórico" 
+              autocomplete="off"
+            />
+            <button type="button" id="btn-clear-history-search" class="history-search-clear" title="Limpar busca" aria-label="Limpar busca" style="display: none;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <div class="history-filter-group" role="group" aria-label="Filtros rápidos de status">
+            <button type="button" class="history-filter-btn active" data-filter="all" aria-pressed="true">
+              Todos
+            </button>
+            <button type="button" class="history-filter-btn" data-filter="safe" aria-pressed="false">
+              Compatíveis
+            </button>
+            <button type="button" class="history-filter-btn" data-filter="warning" aria-pressed="false">
+              Atenção
+            </button>
+            <button type="button" class="history-filter-btn" data-filter="danger" aria-pressed="false">
+              Evitar
+            </button>
+          </div>
+        </div>
+
+        <div id="history-container" class="history-grid" aria-live="polite">
+          <!-- Renderizado via app.js -->
+        </div>
+      </section>
+
+      <!-- 7. Seção Informativa: Apresentação de Benefícios em 3 Cards -->
+      <section id="sobre" class="content-section info-section" aria-labelledby="info-heading">
+        <div class="section-headline text-center">
+          <span class="section-eyebrow">Simplicidade & Proteção</span>
+          <h2 id="info-heading" class="section-heading">Como funciona o MenuSafe</h2>
+          <p class="section-subtext">Uma experiência intuitiva pensada para proteger o seu bem-estar alimentar:</p>
+        </div>
+
+        <div class="info-steps-list">
+          <!-- Etapa 01 -->
+          <div class="info-step-card">
+            <div class="step-number-box">01</div>
+            <div class="step-content">
+              <h3 class="step-title">Selecione suas restrições</h3>
+              <p class="step-desc">Marque as opções que você não pode consumir (lactose, glúten, amendoim, ovo ou frutos do mar).</p>
+            </div>
+          </div>
+
+          <!-- Etapa 02 -->
+          <div class="info-step-card">
+            <div class="step-number-box">02</div>
+            <div class="step-content">
+              <h3 class="step-title">Analise os ingredientes</h3>
+              <p class="step-desc">Digite o nome do prato, refeição ou lista de ingredientes que deseja verificar.</p>
+            </div>
+          </div>
+
+          <!-- Etapa 03 -->
+          <div class="info-step-card">
+            <div class="step-number-box">03</div>
+            <div class="step-content">
+              <h3 class="step-title">Veja o resultado</h3>
+              <p class="step-desc">Confira os ingredientes identificados com fotos e a classificação de segurança em tempo real.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 8. Rodapé Elegante e Moderno -->
+    <footer class="site-footer">
+      <p class="footer-copy">© 2026 MenuSafe. Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
